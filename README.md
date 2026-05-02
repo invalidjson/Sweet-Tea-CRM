@@ -1,4 +1,6 @@
-# CRM — AI-Powered Agency Lead Tool
+# Sweet Tea CRM
+
+![Sweet Tea CRM](public/sweet-tea-crm.png)
 
 [![Tests](https://github.com/invalidjson/Sweet-Tea-CRM/actions/workflows/test.yml/badge.svg)](https://github.com/invalidjson/Sweet-Tea-CRM/actions/workflows/test.yml)
 
