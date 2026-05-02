@@ -1,6 +1,6 @@
 # CRM — AI-Powered Agency Lead Tool
 
-[![Tests](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/test.yml)
+[![Tests](https://github.com/invalidjson/Sweet-Tea-CRM/actions/workflows/test.yml/badge.svg)](https://github.com/invalidjson/Sweet-Tea-CRM/actions/workflows/test.yml)
 
 Web agency CRM for finding and scoring local businesses that need web work. Searches Google Places + Apollo.io, scores leads by closeability (0–100), and manages your outreach pipeline.
 
