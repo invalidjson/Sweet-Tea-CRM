@@ -7,6 +7,7 @@ const PAGE_TITLES: Record<string, { title: string; sub: string }> = {
   "/": { title: "Dashboard", sub: "Overview of your pipeline" },
   "/search": { title: "Lead Search", sub: "Find new local business leads" },
   "/leads": { title: "Lead Management", sub: "Track and manage saved leads" },
+  "/help": { title: "Help", sub: "How to use Sweet Tea CRM" },
 }
 
 export function Header() {
@@ -16,11 +17,11 @@ export function Header() {
   return (
     <header className="h-12 border-b border-border flex items-center justify-between px-6 shrink-0 bg-background">
       <div className="flex items-baseline gap-3">
-        <h1 className="text-[11px] font-mono font-bold uppercase tracking-[0.15em] text-foreground">
+        <h1 className="text-[13px] font-mono font-bold uppercase tracking-[0.15em] text-foreground">
           {page.title}
         </h1>
         {page.sub && (
-          <span className="text-[10px] font-mono text-muted-foreground hidden sm:block">
+          <span className="text-[12px] font-mono text-muted-foreground hidden sm:block">
             — {page.sub}
           </span>
         )}

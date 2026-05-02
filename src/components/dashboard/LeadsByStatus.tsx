@@ -18,7 +18,7 @@ export function LeadsByStatus({ counts }: { counts: StatusCount[] }) {
   return (
     <Card className="rounded-sm shadow-none">
       <CardHeader className="pb-2 pt-4 px-4">
-        <CardTitle className="text-[9px] font-mono uppercase tracking-[0.2em] text-muted-foreground font-medium">
+        <CardTitle className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground font-medium">
           Leads by Status
         </CardTitle>
       </CardHeader>
@@ -28,10 +28,10 @@ export function LeadsByStatus({ counts }: { counts: StatusCount[] }) {
           return (
             <div key={status}>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] font-mono text-foreground">
+                <span className="text-[12px] font-mono text-foreground">
                   {STATUS_LABELS[status]}
                 </span>
-                <span className="text-[10px] font-mono tabular-nums text-muted-foreground">
+                <span className="text-[12px] font-mono tabular-nums text-muted-foreground">
                   {count}
                 </span>
               </div>
@@ -45,7 +45,7 @@ export function LeadsByStatus({ counts }: { counts: StatusCount[] }) {
           )
         })}
         {counts.length === 0 && (
-          <p className="text-[10px] font-mono text-muted-foreground">No leads yet.</p>
+          <p className="text-[12px] font-mono text-muted-foreground">No leads yet.</p>
         )}
       </CardContent>
     </Card>

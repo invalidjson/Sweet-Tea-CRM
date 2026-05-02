@@ -11,7 +11,7 @@ export function TopLeads({ leads }: { leads: Lead[] }) {
   return (
     <Card className="rounded-sm shadow-none">
       <CardHeader className="pb-2 pt-4 px-4">
-        <CardTitle className="text-[9px] font-mono uppercase tracking-[0.2em] text-muted-foreground font-medium">
+        <CardTitle className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground font-medium">
           Top Closeability Leads
         </CardTitle>
       </CardHeader>
@@ -21,14 +21,14 @@ export function TopLeads({ leads }: { leads: Lead[] }) {
             key={lead.id}
             className="flex items-center gap-3 py-2.5 border-b border-border last:border-0"
           >
-            <span className="text-[10px] font-mono tabular-nums text-muted-foreground w-4 shrink-0">
+            <span className="text-[12px] font-mono tabular-nums text-muted-foreground w-4 shrink-0">
               {i + 1}
             </span>
             <div className="flex-1 min-w-0">
-              <p className="text-[11px] font-mono font-medium text-foreground truncate">
+              <p className="text-[13px] font-mono font-medium text-foreground truncate">
                 {lead.businessName}
               </p>
-              <p className="text-[10px] font-mono text-muted-foreground">
+              <p className="text-[12px] font-mono text-muted-foreground">
                 {lead.city}, {lead.state}
                 {!lead.hasWebsite && " · no website"}
               </p>
@@ -40,7 +40,7 @@ export function TopLeads({ leads }: { leads: Lead[] }) {
                   style={{ width: `${lead.closeabilityScore ?? 0}%` }}
                 />
               </div>
-              <span className="text-[10px] font-mono tabular-nums text-primary font-bold w-6 text-right">
+              <span className="text-[12px] font-mono tabular-nums text-primary font-bold w-6 text-right">
                 {lead.closeabilityScore ?? 0}
               </span>
             </div>
@@ -52,7 +52,7 @@ export function TopLeads({ leads }: { leads: Lead[] }) {
           </div>
         ))}
         {top.length === 0 && (
-          <p className="text-[10px] font-mono text-muted-foreground py-2">No active leads yet.</p>
+          <p className="text-[12px] font-mono text-muted-foreground py-2">No active leads yet.</p>
         )}
       </CardContent>
     </Card>

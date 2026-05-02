@@ -42,7 +42,7 @@ export function LeadStatusBadge({ status }: { status: LeadStatus }) {
   return (
     <Badge
       className={cn(
-        "text-[9px] font-mono uppercase tracking-wider h-5 px-1.5 rounded-sm font-medium",
+        "text-[11px] font-mono uppercase tracking-wider h-5 px-1.5 rounded-sm font-medium",
         className
       )}
     >

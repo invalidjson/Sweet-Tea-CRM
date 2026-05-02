@@ -33,7 +33,7 @@ function FilterBtn({
     <button
       onClick={onClick}
       className={[
-        "h-7 px-2.5 text-[10px] font-mono uppercase tracking-wider rounded-sm border transition-colors",
+        "h-7 px-2.5 text-[12px] font-mono uppercase tracking-wider rounded-sm border transition-colors",
         active
           ? "bg-primary text-primary-foreground border-primary"
           : "bg-background text-muted-foreground border-border hover:border-foreground hover:text-foreground",
@@ -85,7 +85,7 @@ export function LeadFilters({ total }: { total: number }) {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="text-[10px] font-mono text-muted-foreground mr-1">
+      <span className="text-[12px] font-mono text-muted-foreground mr-1">
         {total} leads
       </span>
 
@@ -118,7 +118,7 @@ export function LeadFilters({ total }: { total: number }) {
       <div className="h-4 w-px bg-border mx-1" />
 
       {/* Sort */}
-      <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">Sort:</span>
+      <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">Sort:</span>
       {(["score", "name", "status", "followUp"] as const).map((key) => (
         <FilterBtn
           key={key}

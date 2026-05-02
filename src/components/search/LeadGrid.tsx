@@ -16,13 +16,13 @@ export function LeadGrid({ results, page, onSave }: LeadGridProps) {
   if (pageResults.length === 0) {
     return (
       <div className="py-16 text-center">
-        <p className="text-[11px] font-mono text-muted-foreground">No results match your filters.</p>
+        <p className="text-[13px] font-mono text-muted-foreground">No results match your filters.</p>
       </div>
     )
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {pageResults.map((result) => (
         <LeadCard key={result.externalId} result={result} onSave={onSave} />
       ))}

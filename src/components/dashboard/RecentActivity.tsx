@@ -29,7 +29,7 @@ export function RecentActivity({ items }: { items: ActivityItem[] }) {
   return (
     <Card className="rounded-sm shadow-none">
       <CardHeader className="pb-2 pt-4 px-4">
-        <CardTitle className="text-[9px] font-mono uppercase tracking-[0.2em] text-muted-foreground font-medium">
+        <CardTitle className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground font-medium">
           Recent Activity
         </CardTitle>
       </CardHeader>
@@ -47,24 +47,24 @@ export function RecentActivity({ items }: { items: ActivityItem[] }) {
                 <Icon size={11} className="text-muted-foreground" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-[11px] font-mono font-medium text-foreground truncate">
+                <p className="text-[13px] font-mono font-medium text-foreground truncate">
                   {item.lead.businessName}
                 </p>
-                <p className="text-[10px] font-mono text-muted-foreground">
+                <p className="text-[12px] font-mono text-muted-foreground">
                   {item.type === "saved"
                     ? "Lead saved"
                     : `${item.event!.type.charAt(0) + item.event!.type.slice(1).toLowerCase()} logged`}
                   {item.event?.outcome && ` — ${item.event.outcome}`}
                 </p>
               </div>
-              <span className="text-[9px] font-mono text-muted-foreground shrink-0 mt-0.5">
+              <span className="text-[11px] font-mono text-muted-foreground shrink-0 mt-0.5">
                 {timeAgo(date)}
               </span>
             </div>
           )
         })}
         {items.length === 0 && (
-          <p className="text-[10px] font-mono text-muted-foreground py-2">No recent activity.</p>
+          <p className="text-[12px] font-mono text-muted-foreground py-2">No recent activity.</p>
         )}
       </CardContent>
     </Card>

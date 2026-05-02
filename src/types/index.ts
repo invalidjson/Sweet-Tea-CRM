@@ -8,14 +8,22 @@ export type LeadStatus =
   | "WON"
   | "LOST"
 
+export type EnrichStatus = "PENDING" | "DONE" | "FAILED"
+
 export type ContactType = "CALL" | "EMAIL" | "SMS" | "MEETING" | "OTHER"
 
+export type ScoreGrade = "A" | "B" | "C" | "D" | "F"
+export type ScoreConfidence = "low" | "medium" | "high"
+
 export interface ScoreBreakdown {
-  noWebsite: number
-  hasPhone: number
-  hasEmail: number
-  bothContacts: number
-  noContacts: number
+  website: number
+  digitalPresence: number
+  activity: number
+  industryFit: number
+  revenueProxy: number
+  reachability: number
+  competitionPressure: number
+  penalties: number
 }
 
 export interface ContactEvent {
@@ -47,30 +55,70 @@ export interface Lead {
   website?: string
   hasWebsite: boolean
   googlePlaceId?: string
+  yelpId?: string
+  primaryCategory?: string
+  googleRating?: number
+  googleReviewCount?: number
+  googleHasPhotos?: boolean
+  googleHasHours?: boolean
+  yelpRating?: number
+  yelpReviewCount?: number
+  apolloOrgId?: string
+  linkedinUrl?: string
+  employeeCount?: number
   closeabilityScore?: number
+  scoreGrade?: ScoreGrade
+  scoreLabel?: string
+  scoreConfidence?: ScoreConfidence
   scoreBreakdown?: ScoreBreakdown
+  scoreReasons?: string[]
+  scoreWarnings?: string[]
   status: LeadStatus
+  enrichStatus?: EnrichStatus
+  enrichedAt?: string
   lastContactedAt?: string
   nextFollowUpAt?: string
   searchRunId?: string
+  doNotCall?: boolean
+  doNotCallAt?: string
   createdAt: string
   updatedAt: string
   contactEvents?: ContactEvent[]
   notes?: Note[]
 }
 
+export type LeadSource = "google" | "apollo" | "merged"
+
 export interface SearchResult {
   externalId: string
+  source?: LeadSource
+  yelpId?: string
+  apolloOrgId?: string
+  linkedinUrl?: string
+  employeeCount?: number
   businessName: string
   address: string
   city: string
   state: string
+  zip?: string
   phone?: string
   email?: string
   website?: string
   hasWebsite: boolean
+  primaryCategory?: string
+  googleRating?: number
+  googleReviewCount?: number
+  googleHasPhotos?: boolean
+  googleHasHours?: boolean
+  yelpRating?: number
+  yelpReviewCount?: number
   closeabilityScore?: number
+  scoreGrade?: ScoreGrade
+  scoreLabel?: string
+  scoreConfidence?: ScoreConfidence
   scoreBreakdown?: ScoreBreakdown
+  scoreReasons?: string[]
+  scoreWarnings?: string[]
   isSaved?: boolean
 }
 

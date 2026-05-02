@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -10,4 +5,92 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+model Lead {
+  id                String         @id @default(cuid())
+  googlePlaceId     String?        @unique
+  yelpId            String?        @unique
+  businessName      String
+  address           String
+  city              String
+  state             String
+  zip               String?
+  phone             String?
+  email             String?
+  website           String?
+  hasWebsite        Boolean        @default(false)
+  primaryCategory   String?
+  googleRating      Float?
+  googleReviewCount Int?
+  googleHasPhotos   Boolean?
+  googleHasHours    Boolean?
+  yelpRating        Float?
+  yelpReviewCount   Int?
+  apolloOrgId       String?        @unique
+  linkedinUrl       String?
+  employeeCount     Int?
+  closeabilityScore Int?
+  scoreGrade        String?
+  scoreLabel        String?
+  scoreConfidence   String?
+  scoreBreakdown    Json?
+  scoreReasons      String[]
+  scoreWarnings     String[]
+  status            LeadStatus     @default(NEW)
+  enrichStatus      EnrichStatus   @default(PENDING)
+  enrichedAt        DateTime?
+  lastContactedAt   DateTime?
+  nextFollowUpAt    DateTime?
+  searchRunId       String?
+  doNotCall         Boolean        @default(false)
+  doNotCallAt       DateTime?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  contactEvents     ContactEvent[]
+  notes             Note[]
+}
+
+enum LeadStatus {
+  NEW
+  SAVED
+  CONTACTED
+  FOLLOW_UP
+  INTERESTED
+  NOT_INTERESTED
+  WON
+  LOST
+}
+
+enum EnrichStatus {
+  PENDING
+  DONE
+  FAILED
+}
+
+model ContactEvent {
+  id        String      @id @default(cuid())
+  leadId    String
+  lead      Lead        @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  type      ContactType
+  notes     String?
+  outcome   String?
+  createdAt DateTime    @default(now())
+}
+
+enum ContactType {
+  CALL
+  EMAIL
+  SMS
+  MEETING
+  OTHER
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

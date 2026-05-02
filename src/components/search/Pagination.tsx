@@ -24,7 +24,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <Button
         variant="ghost"
         size="sm"
-        className="h-7 w-7 p-0 rounded-sm font-mono text-[10px]"
+        className="h-7 w-7 p-0 rounded-sm font-mono text-[12px]"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
@@ -36,13 +36,13 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
           <Button
             variant="ghost"
             size="sm"
-            className="h-7 w-7 p-0 rounded-sm font-mono text-[10px]"
+            className="h-7 w-7 p-0 rounded-sm font-mono text-[12px]"
             onClick={() => onPageChange(1)}
           >
             1
           </Button>
           {pages[0] > 2 && (
-            <span className="text-[10px] font-mono text-muted-foreground px-1">…</span>
+            <span className="text-[12px] font-mono text-muted-foreground px-1">…</span>
           )}
         </>
       )}
@@ -52,7 +52,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
           key={page}
           variant={page === currentPage ? "default" : "ghost"}
           size="sm"
-          className="h-7 w-7 p-0 rounded-sm font-mono text-[10px]"
+          className="h-7 w-7 p-0 rounded-sm font-mono text-[12px]"
           onClick={() => onPageChange(page)}
         >
           {page}
@@ -62,12 +62,12 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       {pages[pages.length - 1] < totalPages && (
         <>
           {pages[pages.length - 1] < totalPages - 1 && (
-            <span className="text-[10px] font-mono text-muted-foreground px-1">…</span>
+            <span className="text-[12px] font-mono text-muted-foreground px-1">…</span>
           )}
           <Button
             variant="ghost"
             size="sm"
-            className="h-7 w-7 p-0 rounded-sm font-mono text-[10px]"
+            className="h-7 w-7 p-0 rounded-sm font-mono text-[12px]"
             onClick={() => onPageChange(totalPages)}
           >
             {totalPages}
@@ -78,14 +78,14 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <Button
         variant="ghost"
         size="sm"
-        className="h-7 w-7 p-0 rounded-sm font-mono text-[10px]"
+        className="h-7 w-7 p-0 rounded-sm font-mono text-[12px]"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         <ChevronRight size={12} />
       </Button>
 
-      <span className="text-[10px] font-mono text-muted-foreground ml-2">
+      <span className="text-[12px] font-mono text-muted-foreground ml-2">
         Page {currentPage} of {totalPages}
       </span>
     </div>

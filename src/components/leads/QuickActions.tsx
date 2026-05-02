@@ -8,7 +8,7 @@ import type { Lead } from "@/types"
 
 const actionLinkClass = cn(
   buttonVariants({ variant: "outline", size: "sm" }),
-  "h-7 px-2 text-[9px] font-mono uppercase tracking-wider rounded-sm inline-flex items-center"
+  "h-7 px-2 text-[11px] font-mono uppercase tracking-wider rounded-sm inline-flex items-center"
 )
 
 interface QuickActionsProps {
@@ -49,7 +49,7 @@ export function QuickActions({ lead, onEdit, onAddNote, onLogContact }: QuickAct
         <Button
           variant="outline"
           size="sm"
-          className="h-7 px-2 text-[9px] font-mono uppercase tracking-wider rounded-sm"
+          className="h-7 px-2 text-[11px] font-mono uppercase tracking-wider rounded-sm"
           onClick={onLogContact}
         >
           <ClipboardList size={10} className="mr-1" />
@@ -60,7 +60,7 @@ export function QuickActions({ lead, onEdit, onAddNote, onLogContact }: QuickAct
         <Button
           variant="outline"
           size="sm"
-          className="h-7 px-2 text-[9px] font-mono uppercase tracking-wider rounded-sm"
+          className="h-7 px-2 text-[11px] font-mono uppercase tracking-wider rounded-sm"
           onClick={onAddNote}
         >
           <StickyNote size={10} className="mr-1" />
@@ -71,7 +71,7 @@ export function QuickActions({ lead, onEdit, onAddNote, onLogContact }: QuickAct
         <Button
           variant="outline"
           size="sm"
-          className="h-7 px-2 text-[9px] font-mono uppercase tracking-wider rounded-sm"
+          className="h-7 px-2 text-[11px] font-mono uppercase tracking-wider rounded-sm"
           onClick={onEdit}
         >
           <FileEdit size={10} className="mr-1" />

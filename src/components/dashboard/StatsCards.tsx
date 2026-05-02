@@ -12,14 +12,14 @@ function StatTile({ label, value, sub, highlight }: StatTileProps) {
   return (
     <Card className="rounded-sm shadow-none">
       <CardContent className="p-4">
-        <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
+        <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
           {label}
         </p>
         <p className={`text-3xl font-mono font-bold tabular-nums ${highlight ? "text-primary" : "text-foreground"}`}>
           {value}
         </p>
         {sub && (
-          <p className="text-[10px] font-mono text-muted-foreground mt-1">{sub}</p>
+          <p className="text-[12px] font-mono text-muted-foreground mt-1">{sub}</p>
         )}
       </CardContent>
     </Card>
