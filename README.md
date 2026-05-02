@@ -2,6 +2,13 @@
 
 ![Sweet Tea CRM](public/sweet-tea-crm.png)
 
+<img width="1528" height="1064" alt="Screenshot 2026-05-02 at 6 05 01 PM" src="https://github.com/user-attachments/assets/e9bbb15e-3724-4017-aaa5-29779c49ce8d" />
+<img width="1270" height="1060" alt="Screenshot 2026-05-02 at 6 05 46 PM" src="https://github.com/user-attachments/assets/ab2e1654-cc9e-4dad-80af-e5b24fe70bba" />
+<img width="1520" height="1067" alt="Screenshot 2026-05-02 at 6 06 00 PM" src="https://github.com/user-attachments/assets/22e56dd0-9bb8-4379-b85d-68ad4779fbf9" />
+<img width="1264" height="1069" alt="Screenshot 2026-05-02 at 6 06 11 PM" src="https://github.com/user-attachments/assets/3079db65-7db1-4f90-ae14-7015882f4194" />
+
+
+
 [![Tests](https://github.com/invalidjson/Sweet-Tea-CRM/actions/workflows/test.yml/badge.svg)](https://github.com/invalidjson/Sweet-Tea-CRM/actions/workflows/test.yml)
 
 Web agency CRM for finding and scoring local businesses that need web work. Searches Google Places + Apollo.io, scores leads by closeability (0–100), and manages your outreach pipeline.
