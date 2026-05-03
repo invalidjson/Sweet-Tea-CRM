@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { LayoutDashboard, Search, Users, BookOpen } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -37,11 +38,18 @@ export function Sidebar() {
   return (
     <aside className="w-56 shrink-0 border-r border-border bg-sidebar flex flex-col h-screen sticky top-0">
       {/* Brand */}
-      <div className="h-12 flex items-center px-4 border-b border-sidebar-border">
+      <div className="h-12 flex items-center gap-2.5 px-4 border-b border-sidebar-border">
+        <Image
+          src="/android-chrome-192x192.png"
+          alt="Sweet Tea CRM"
+          width={24}
+          height={24}
+          className="rounded-sm shrink-0"
+        />
         <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase text-foreground">
           Sweet Tea
         </span>
-        <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase text-primary ml-1">
+        <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase text-primary">
           CRM
         </span>
       </div>
