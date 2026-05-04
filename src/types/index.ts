@@ -1,3 +1,5 @@
+export type LeadType = "WEB" | "SOFTWARE"
+
 export type LeadStatus =
   | "NEW"
   | "SAVED"
@@ -24,6 +26,7 @@ export interface ScoreBreakdown {
   reachability: number
   competitionPressure: number
   penalties: number
+  employeeSize?: number
 }
 
 export interface ContactEvent {
@@ -45,6 +48,7 @@ export interface Note {
 
 export interface Lead {
   id: string
+  leadType: LeadType
   businessName: string
   address: string
   city: string
@@ -91,6 +95,7 @@ export type LeadSource = "google" | "apollo" | "merged"
 
 export interface SearchResult {
   externalId: string
+  leadType?: LeadType
   source?: LeadSource
   yelpId?: string
   apolloOrgId?: string
@@ -126,9 +131,11 @@ export interface SearchQuery {
   businessType: string
   city: string
   state: string
+  leadType?: LeadType
 }
 
 export interface LeadFilters {
+  leadType?: LeadType
   status?: LeadStatus
   hasWebsite?: boolean
   hasPhone?: boolean

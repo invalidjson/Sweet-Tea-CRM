@@ -53,11 +53,13 @@ export interface CompetitionData {
 }
 
 export interface LeadScoringInput {
+  leadType?: "WEB" | "SOFTWARE"
   businessName?: string
   category?: string
   categories?: string[]
   city?: string
   state?: string
+  employeeCount?: number
   hasWebsite?: boolean
   websiteUrl?: string
   websiteAnalysis?: WebsiteAnalysis
@@ -87,6 +89,8 @@ export interface CloseabilityBreakdown {
   competitionPressure: number
   /** Penalty points subtracted from weighted total */
   penalties: number
+  /** SOFTWARE leads only: employee count fit score */
+  employeeSize?: number
 }
 
 export type Grade = "A" | "B" | "C" | "D" | "F"

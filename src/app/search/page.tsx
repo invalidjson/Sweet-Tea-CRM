@@ -87,6 +87,7 @@ export default function SearchPage() {
       city: query.city,
       state: query.state,
     })
+    if (query.leadType) params.set("leadType", query.leadType)
     if (token) params.set("pageToken", token)
     const res = await fetch(`/api/search?${params}`)
     const data = await res.json()

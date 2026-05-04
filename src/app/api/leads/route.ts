@@ -17,11 +17,13 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const status = searchParams.get("status") ?? undefined
   const noWebsite = searchParams.get("noWebsite") === "1"
+  const leadType = searchParams.get("leadType") ?? undefined
 
   const leads = await prisma.lead.findMany({
     where: {
       ...(status ? { status: status as never } : {}),
       ...(noWebsite ? { hasWebsite: false } : {}),
+      ...(leadType ? { leadType: leadType as never } : {}),
     },
     include: { contactEvents: true, notes: true },
     orderBy: { createdAt: "desc" },
@@ -34,6 +36,7 @@ export async function POST(request: NextRequest) {
   const body: SearchResult = await request.json()
 
   const commonCreate = {
+    leadType: (body.leadType ?? "WEB") as never,
     businessName: body.businessName,
     address: body.address,
     city: body.city,

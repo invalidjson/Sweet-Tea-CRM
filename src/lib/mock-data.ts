@@ -239,6 +239,7 @@ const daysFromNow = (d: number) => new Date(now + d * 86400000).toISOString()
 export const MOCK_SAVED_LEADS: Lead[] = [
   {
     id: "lead_001",
+    leadType: "WEB" as const,
     businessName: "Lone Star Landscaping Co",
     address: "1802 S Lamar Blvd",
     city: "Austin",
@@ -264,6 +265,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_002",
+    leadType: "WEB" as const,
     businessName: "Bluebird Electric LLC",
     address: "9801 N Lamar Blvd",
     city: "Austin",
@@ -289,6 +291,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_003",
+    leadType: "WEB" as const,
     businessName: "Six Shooter Fencing Co",
     address: "3301 W Anderson Ln",
     city: "Austin",
@@ -310,6 +313,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_004",
+    leadType: "WEB" as const,
     businessName: "Gulf Coast Concrete & Masonry",
     address: "4400 W Gray St",
     city: "Houston",
@@ -334,6 +338,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_005",
+    leadType: "WEB" as const,
     businessName: "Hill Country HVAC Solutions",
     address: "3200 Bee Cave Rd Ste 100",
     city: "Austin",
@@ -356,6 +361,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_006",
+    leadType: "WEB" as const,
     businessName: "Alamo City Auto Glass",
     address: "2800 NE Loop 410",
     city: "San Antonio",
@@ -374,6 +380,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_007",
+    leadType: "WEB" as const,
     businessName: "Luxe Salon & Spa",
     address: "2222 Rio Grande St",
     city: "Austin",
@@ -392,6 +399,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_008",
+    leadType: "WEB" as const,
     businessName: "River Oaks Cleaning Co",
     address: "1919 Westheimer Rd",
     city: "Houston",
@@ -416,6 +424,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_009",
+    leadType: "WEB" as const,
     businessName: "Brisket & Beans BBQ",
     address: "4501 San Jacinto St",
     city: "Houston",
@@ -434,6 +443,7 @@ export const MOCK_SAVED_LEADS: Lead[] = [
   },
   {
     id: "lead_010",
+    leadType: "WEB" as const,
     businessName: "Magnolia Roofing & Gutters",
     address: "14200 N Interstate 35",
     city: "Austin",

@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useCallback } from "react"
-import type { LeadStatus } from "@/types"
+import type { LeadStatus, LeadType } from "@/types"
 
 const STATUSES: LeadStatus[] = [
   "NEW", "SAVED", "CONTACTED", "FOLLOW_UP",
@@ -44,11 +44,17 @@ function FilterBtn({
   )
 }
 
+const LEAD_TYPE_LABELS: Record<LeadType, string> = {
+  WEB: "Web",
+  SOFTWARE: "Software",
+}
+
 export function LeadFilters({ total }: { total: number }) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
+  const currentLeadType = searchParams.get("leadType") as LeadType | null
   const currentStatus = searchParams.get("status") as LeadStatus | null
   const noWebsite = searchParams.get("noWebsite") === "1"
   const sortBy = searchParams.get("sortBy") ?? "score"
@@ -88,6 +94,23 @@ export function LeadFilters({ total }: { total: number }) {
       <span className="text-[12px] font-mono text-muted-foreground mr-1">
         {total} leads
       </span>
+
+      <div className="h-4 w-px bg-border mx-1" />
+
+      {/* Lead type filters */}
+      <FilterBtn
+        active={currentLeadType === null}
+        label="All Types"
+        onClick={() => setParam("leadType", null)}
+      />
+      {(["WEB", "SOFTWARE"] as LeadType[]).map((t) => (
+        <FilterBtn
+          key={t}
+          active={currentLeadType === t}
+          label={LEAD_TYPE_LABELS[t]}
+          onClick={() => setParam("leadType", currentLeadType === t ? null : t)}
+        />
+      ))}
 
       <div className="h-4 w-px bg-border mx-1" />
 

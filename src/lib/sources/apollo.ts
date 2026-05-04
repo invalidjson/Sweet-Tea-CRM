@@ -1,4 +1,4 @@
-import type { SearchResult } from "@/types"
+import type { SearchResult, LeadType } from "@/types"
 import { calculateCloseabilityScore } from "@/lib/scoring/calculateCloseabilityScore"
 
 const APOLLO_SEARCH = "https://api.apollo.io/api/v1/mixed_companies/search"
@@ -34,7 +34,8 @@ interface ApolloSearchResponse {
 export async function searchApollo(
   term: string,
   city: string,
-  state: string
+  state: string,
+  leadType: LeadType = "WEB"
 ): Promise<SearchResult[]> {
   const apiKey = process.env.APOLLO_API_KEY
   if (!apiKey) return []
@@ -75,10 +76,12 @@ export async function searchApollo(
         undefined
 
       const scored = calculateCloseabilityScore({
+        leadType,
         businessName: org.name!,
         category: org.industry ?? "",
         city: org.city ?? city,
         state: org.state ?? state,
+        employeeCount: org.estimated_num_employees,
         hasWebsite: !!website,
         googlePlace: {
           hasPhone: !!phone,
@@ -88,6 +91,7 @@ export async function searchApollo(
 
       return {
         externalId: `apollo_${org.id}`,
+        leadType,
         source: "apollo" as const,
         apolloOrgId: org.id,
         linkedinUrl: org.linkedin_url ?? undefined,

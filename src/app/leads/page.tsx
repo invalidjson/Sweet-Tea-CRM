@@ -6,7 +6,7 @@ import { LeadManageCard } from "@/components/leads/LeadManageCard"
 import { LeadDetailSheet } from "@/components/leads/LeadDetailSheet"
 import { LeadFilters } from "@/components/leads/LeadFilters"
 import { Pagination } from "@/components/search/Pagination"
-import type { Lead, LeadStatus } from "@/types"
+import type { Lead, LeadStatus, LeadType } from "@/types"
 import { Suspense } from "react"
 
 const PAGE_SIZE = 50
@@ -18,6 +18,7 @@ function LeadsContent() {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [page, setPage] = useState(1)
 
+  const leadTypeFilter = searchParams.get("leadType") as LeadType | null
   const statusFilter = searchParams.get("status") as LeadStatus | null
   const noWebsiteFilter = searchParams.get("noWebsite") === "1"
   const sortBy = searchParams.get("sortBy") ?? "score"
@@ -34,6 +35,7 @@ function LeadsContent() {
   const leads = useMemo(() => {
     let out = [...allLeads]
 
+    if (leadTypeFilter) out = out.filter((l) => l.leadType === leadTypeFilter)
     if (statusFilter) out = out.filter((l) => l.status === statusFilter)
     if (noWebsiteFilter) out = out.filter((l) => !l.hasWebsite)
 
@@ -51,7 +53,7 @@ function LeadsContent() {
     })
 
     return out
-  }, [allLeads, statusFilter, noWebsiteFilter, sortBy, sortDir])
+  }, [allLeads, leadTypeFilter, statusFilter, noWebsiteFilter, sortBy, sortDir])
 
   const totalPages = Math.max(1, Math.ceil(leads.length / PAGE_SIZE))
   const paginated = leads.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)

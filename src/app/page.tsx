@@ -12,6 +12,7 @@ function serializeLead(lead: PrismaLead & { contactEvents: unknown[]; notes: unk
 
   return {
     id: lead.id,
+    leadType: lead.leadType as Lead["leadType"],
     businessName: lead.businessName,
     address: lead.address,
     city: lead.city,

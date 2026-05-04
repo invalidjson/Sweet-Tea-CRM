@@ -37,6 +37,7 @@ model Lead {
   scoreBreakdown    Json?
   scoreReasons      String[]
   scoreWarnings     String[]
+  leadType          LeadType       @default(WEB)
   status            LeadStatus     @default(NEW)
   enrichStatus      EnrichStatus   @default(PENDING)
   enrichedAt        DateTime?
@@ -49,6 +50,11 @@ model Lead {
   updatedAt         DateTime       @updatedAt
   contactEvents     ContactEvent[]
   notes             Note[]
+}
+
+enum LeadType {
+  WEB
+  SOFTWARE
 }
 
 enum LeadStatus {

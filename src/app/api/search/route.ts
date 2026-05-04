@@ -3,7 +3,7 @@ import { calculateCloseabilityScore } from "@/lib/scoring/calculateCloseabilityS
 import { searchApollo } from "@/lib/sources/apollo"
 import { deduplicateResults } from "@/lib/deduplication"
 import { prisma } from "@/lib/prisma"
-import type { SearchResult } from "@/types"
+import type { SearchResult, LeadType } from "@/types"
 
 function normalizePhone(phone: string): string {
   const digits = phone.replace(/\D/g, "")
@@ -88,6 +88,7 @@ async function searchGoogle(
   city: string,
   state: string,
   apiKey: string,
+  leadType: LeadType,
   pageToken?: string
 ): Promise<{ results: SearchResult[]; nextPageToken: string | null }> {
   const raw = await fetch(PLACES_TEXT_SEARCH, {
@@ -126,6 +127,7 @@ async function searchGoogle(
     const categories = place.types?.map((t) => t.replace(/_/g, " "))
 
     const scored = calculateCloseabilityScore({
+      leadType,
       businessName: place.displayName?.text ?? "",
       category,
       categories,
@@ -161,6 +163,7 @@ async function searchGoogle(
       googleReviewCount: place.userRatingCount,
       googleHasPhotos: (place.photos?.length ?? 0) > 0,
       googleHasHours: !!place.currentOpeningHours,
+      leadType,
       closeabilityScore: scored.totalScore,
       scoreGrade: scored.grade,
       scoreLabel: scored.label,
@@ -180,6 +183,7 @@ export async function GET(request: NextRequest) {
   const city = searchParams.get("city")?.trim()
   const state = searchParams.get("state")?.trim()
   const pageToken = searchParams.get("pageToken")?.trim() || undefined
+  const leadType: LeadType = searchParams.get("leadType") === "SOFTWARE" ? "SOFTWARE" : "WEB"
 
   if (!businessType || !city || !state) {
     return NextResponse.json({ error: "Missing required params: businessType, city, state" }, { status: 400 })
@@ -191,8 +195,8 @@ export async function GET(request: NextRequest) {
   }
 
   const [googleResult, apolloResult, dncLeads] = await Promise.allSettled([
-    searchGoogle(businessType, city, state, googleApiKey, pageToken),
-    searchApollo(businessType, city, state),
+    searchGoogle(businessType, city, state, googleApiKey, leadType, pageToken),
+    searchApollo(businessType, city, state, leadType),
     prisma.lead.findMany({ where: { doNotCall: true }, select: { phone: true } }),
   ])
 
